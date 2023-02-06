@@ -9,22 +9,25 @@ import {
   MDBContainer
 } from 'mdb-react-ui-kit';
 import './Analyser.css'
+import Result from '../Result.js'
 
 function Analyser() {
-  const [inputToCheck, setInput] = useState('Empty String');
+  const [inputToCheck, setInput] = useState('');
 
   const handleSubmit = (event) => {
-    fetch('http://127.0.0.1:5000/verification', {
-      method: 'POST',
-      body: JSON.stringify({
-        'sentence': inputToCheck
-      }),
+    fetch('http://127.0.0.1:5000', {
+      method: 'GET',
+      mode: 'cors',
       headers: {
-        'Content-type': 'application/json; charset=UTF-8',
+        'Content-type': 'application/json',
       },
     })
     .then(response => response.json())
-    .then(data => console.log(data));
+    .then(data => console.log(data))
+    .catch((error) => {
+      // catch any unexpected errors
+      console.log(error);
+    });
   }
 
   return (
@@ -47,6 +50,11 @@ function Analyser() {
           </form>
         </MDBCardBody>
       </MDBCard>
+      
+      <Result className='box' sentence='Humans have no tails.' is_rumour='an unverified rumour'/>
+      <Result className='box' sentence = 'In 1002, Issac Newton created the IPhone.' is_rumour='a false rumour'/>
+      <Result className='box' sentence = 'Lee Hsien Loong built a castle.' is_rumour='a false rumour'/>
+      <Result className='box' sentence = 'Newpapers are malicious sources of information, and can spread misinformation quickly' is_rumour='an unverified rumour'/>
     </MDBContainer>
   );
 }

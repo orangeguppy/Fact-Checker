@@ -17,7 +17,7 @@ function Navbar() {
   return (
     <MDBNavbar expand='lg' dark style={{ backgroundColor: '#1e2433' }}>
       <MDBContainer fluid>
-        <MDBNavbarBrand href='#'>Brand</MDBNavbarBrand>
+        <MDBNavbarBrand href='#'>Fact.ly</MDBNavbarBrand>
 
         <MDBNavbarToggler
           aria-controls='navbarSupportedContent'
@@ -30,14 +30,6 @@ function Navbar() {
 
         <MDBCollapse navbar show={showBasic}>
           <MDBNavbarNav className='mr-auto mb-2 mb-lg-0'>
-            <MDBNavbarItem>
-              <MDBNavbarLink active aria-current='page' href='#' style={{ fontcolor: '#e3f2fd' }}>
-                Home
-              </MDBNavbarLink>
-            </MDBNavbarItem>
-            <MDBNavbarItem>
-              <MDBNavbarLink href='#'>Link</MDBNavbarLink>
-            </MDBNavbarItem>
           </MDBNavbarNav>
 
         </MDBCollapse>
